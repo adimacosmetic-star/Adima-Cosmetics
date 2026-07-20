@@ -332,6 +332,15 @@
     border-radius: 10px;
   }
 
+  .card .price{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    margin-top: 1rem;
+  }
+
   @media (max-width: 720px){
     .grid{ grid-template-columns: 1fr; }
     header{ padding: 1.1rem 5vw; }
@@ -596,6 +605,15 @@
     margin-bottom: 1rem;
   }
 
+  .modal-body .price{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    margin-bottom: 1.1rem;
+  }
+
   .modal-body p{
     color: rgba(42,36,32,0.78);
     font-size: 0.98rem;
@@ -644,6 +662,7 @@
       data-title="GOMMAGE au Noyau de Datte"
       data-tag="Beauté naturelle"
       data-img="./Gommage-noyau-datte.jpg"
+      data-price="49 MAD"
       data-full="Ce gommage naturel associe poudre de noyau de datte, huile de rose, huile d'amande douce et miel pour 
       exfolier la peau en douceur. Il élimine les cellules mortes et laisse la peau douce, lisse et éclatante après 
       chaque utilisation. Il s'applique en petite quantité sur peau propre et humide, par mouvements circulaires pendant 
@@ -672,6 +691,8 @@
             et à conserver à l'abri de la lumière.
         </p>
 
+        <span class="price">49 MAD</span>
+
         <span class="more">Découvrir</span>
     </div>
 
@@ -683,6 +704,7 @@
       data-title="Huile au Noyau de Datte"
       data-tag="Beauté naturelle"
       data-img="./Zit-noyau-datte.jpg"
+      data-price="179 MAD"
       data-full="L'huile de noyau de datte, ingrédient phare de la gamme Adima, nourrit, 
       fortifie et stimule la croissance des cheveux. Enrichie en huile d'amande douce, 
       huile de sésame et clou de girofle, elle protège la fibre capillaire tout en lui 
@@ -707,6 +729,7 @@
         <p>Huile de noyau de datte enrichie en amande douce, sésame et clou de girofle, 
           qui nourrit, fortifie et stimule la croissance des cheveux. À masser sur cuir chevelu 
           et longueurs 2 à 3 fois par semaine, en laissant agir avant le shampoing.</p>
+        <span class="price">179 MAD</span>
         <span class="more">Découvrir</span>
       </div>
     </article>
@@ -717,6 +740,7 @@
       data-title="MASCARA au Noyau de Datte "
       data-tag="Mountain cut"
       data-img="./Maskara-noyau-datte.jpg"
+      data-price="69 MAD"
       data-full="Cette huile fortifiante est spécialement conçue pour le soin des cils et des 
       sourcils. Sa formule à base d'huile de noyau de datte et d'huile d'olive vierge nourrit 
       et renforce les poils en profondeur. Elle s'applique en petite quantité à l'aide d'une 
@@ -741,6 +765,7 @@
         <p>Huile fortifiante au noyau de datte et à l'huile d'olive vierge pour nourrir et renforcer
            cils et sourcils. À appliquer chaque soir à l'aide d'une brosse propre, pour un soin 
            quotidien et régulier.</p>
+        <span class="price">69 MAD</span>
         <span class="more">Découvrir</span>
       </div>
     </article>
@@ -751,6 +776,7 @@
       data-title="KHOL au Noyau de Datte"
       data-tag="Hand rolled"
       data-img="./khol-noyau-datte.jpg"
+      data-price="20 MAD"
       data-full="Inspiré du patrimoine marocain, ce khôl aux noyaux de dattes allie authenticité 
       et qualité pour sublimer le regard. Élaboré à partir de noyaux de dattes soigneusement 
       sélectionnés, il offre une couleur noire intense, une texture douce et une application 
@@ -775,6 +801,7 @@
         <p>Khôl naturel aux noyaux de dattes, inspiré du patrimoine marocain, qui offre 
           un noir intense et prend soin des cils au quotidien. Formule naturelle, longue 
           tenue et application facile, sans substances chimiques agressives.</p>
+        <span class="price">20 MAD</span>
         <span class="more">Découvrir</span>
       </div>
     </article>
@@ -812,10 +839,10 @@
           <label for="orderProduct">Produit souhaité</label>
           <select id="orderProduct" name="product" required>
             <option value="" disabled selected>Choisir un produit</option>
-            <option value="Gommage au Noyau de Datte">GOMMAGE au Noyau de Datte</option>
-            <option value="Huile au Noyau de Datte">Huile au Noyau de Datte</option>
-            <option value="Mascara au Noyau de Datte">MASCARA au Noyau de Datte</option>
-            <option value="Khôl au Noyau de Datte">KHOL au Noyau de Datte</option>
+            <option value="Gommage au Noyau de Datte">GOMMAGE au Noyau de Datte — 149 MAD</option>
+            <option value="Huile au Noyau de Datte">Huile au Noyau de Datte — 189 MAD</option>
+            <option value="Mascara au Noyau de Datte">MASCARA au Noyau de Datte — 99 MAD</option>
+            <option value="Khôl au Noyau de Datte">KHOL au Noyau de Datte — 89 MAD</option>
           </select>
           <span class="error" id="orderProductError"></span>
         </div>
@@ -848,6 +875,7 @@
     <div class="modal-body">
       <span class="tag" id="modalTag"></span>
       <h3 id="modalTitle"></h3>
+      <span class="price" id="modalPrice"></span>
       <p id="modalText"></p>
     </div>
   </div>
@@ -872,6 +900,7 @@
   const modalImg = document.getElementById('modalImg');
   const modalTag = document.getElementById('modalTag');
   const modalTitle = document.getElementById('modalTitle');
+  const modalPrice = document.getElementById('modalPrice');
   const modalText = document.getElementById('modalText');
   const modalClose = document.getElementById('modalClose');
   let lastFocused = null;
@@ -881,6 +910,7 @@
     modalImg.alt = card.dataset.title;
     modalTag.textContent = card.dataset.tag;
     modalTitle.textContent = card.dataset.title;
+    modalPrice.textContent = card.dataset.price || '';
     modalText.textContent = card.dataset.full;
 
     lastFocused = document.activeElement;
